@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Main background color layer -->
+    <item android:drawable="@color/curve_color"/>
+
+    <!-- Curve shape at the bottom -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/main_bg_color"/>
+            <corners android:bottomRightRadius="350dp"/>
+        </shape>
+
+    </item>
+</layer-list>

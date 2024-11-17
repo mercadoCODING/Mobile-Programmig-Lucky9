@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Lucky9App</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="login">Login</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="already_have_account">already have an account?</string>
+    <string name="email">Email</string>
+    <string name="address">Address</string>
+    <string name="contact_number">Contact Number</string>
+    <string name="age">Age</string>
+</resources>
