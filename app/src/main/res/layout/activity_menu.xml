@@ -1,10 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MenuActivity">
+    android:background="@drawable/background"
+    tools:context=".activities.MenuActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Menu Text -->
+    <TextView
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        android:text="@string/menu"
+        android:fontFamily="@font/actor"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="25dp"
+        android:textSize="30sp"
+        android:textColor="@android:color/white"
+        android:id="@+id/textMenu" />
+
+    <!-- Profile Button with Circular Image and Border -->
+    <ImageButton
+        android:id="@+id/profileButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="20dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="15dp"
+        android:contentDescription="Profile Picture"
+        android:scaleType="centerCrop"
+        android:src="@drawable/dfaultpic"
+        android:background="@drawable/border"
+       />
+
+    <!-- GridLayout with Buttons -->
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:orientation="horizontal"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/textMenu"
+        android:layout_marginTop="25dp"
+        android:padding="16dp">
+
+        <!-- Lucky9 Button -->
+        <ImageButton
+            android:id="@+id/lucky9Button"
+            android:layout_width="190dp"
+            android:layout_height="100dp"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_marginTop="120dp"
+            android:background="@drawable/border"
+            android:contentDescription="for Lucky9 Button Game"
+            android:scaleType="centerCrop"
+            android:src="@drawable/luck9logo" />
+
+        <!-- Match Game Button -->
+        <ImageButton
+            android:id="@+id/matchGameButton"
+            android:layout_width="190dp"
+            android:layout_height="100dp"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border"
+            android:contentDescription="for Matching Games"
+            android:scaleType="centerCrop"
+            android:src="@drawable/matchlogo" />
+
+        <!-- Leaderboard Button -->
+        <ImageButton
+            android:id="@+id/leaderboardButton"
+            android:layout_width="155dp"
+            android:layout_height="210dp"
+            android:layout_row="0"
+            android:layout_rowSpan="2"
+            android:layout_column="1"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border"
+            android:contentDescription="LeaderBoard Button"
+            android:scaleType="centerCrop"
+            android:src="@drawable/leaderboard" />
+
+    </GridLayout>
+
+</RelativeLayout>
