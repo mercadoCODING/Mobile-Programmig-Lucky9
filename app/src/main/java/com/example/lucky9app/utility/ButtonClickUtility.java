@@ -44,7 +44,7 @@ public class ButtonClickUtility {
                 boolean userAdded = userDAO.addUser(username, email, password, gender, Integer.parseInt(age), contactNumber, address);
 
                 if (userAdded) {
-
+                    Intent intent = new Intent(activity, targetActivity);
                     Bundle bundle = new Bundle();
                     bundle.putString("username", username);
                     bundle.putString("email", email);
@@ -53,10 +53,12 @@ public class ButtonClickUtility {
                     bundle.putString("age", age);
                     bundle.putString("contact_number", contactNumber);
                     bundle.putString("address", address);
+                    intent.putExtras(bundle);
 
 
                     AlertDialogUtil.showDialogWithAction(activity,"Success","Sign Up Success",(dialog, which) -> {
-                        Intent intent = new Intent(activity, targetActivity);
+
+
                         activity.startActivity(intent);
                     });
                 } else {
@@ -75,8 +77,8 @@ public class ButtonClickUtility {
                 UserDAO userDAO = new UserDAO(activity);
 
                 boolean confirmUser = userDAO.loginUser(username, password);
+                int userId = userDAO.getUserIdByUsername(username);
                 if (confirmUser) {
-                    int userId = userDAO.getUserIdByUsername(username);
 
                     ImageDAO imageDAO = new ImageDAO(activity);
                     byte[] profilePicture = imageDAO.getProfilePicture(userId);
@@ -85,11 +87,18 @@ public class ButtonClickUtility {
 
                         AlertDialogUtil.showDialogWithAction(activity, "Success", "Login Success", (dialog, which) -> {
                             Intent intent = new Intent(activity, MenuActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putString("username", username);
+                            bundle.putByteArray("profilePictureBytes",profilePicture);
+                            intent.putExtras(bundle);
                             activity.startActivity(intent);
                         });
                     } else {
                         AlertDialogUtil.showDialogWithAction(activity, "Success", "Login Success", (dialog, which) -> {
                             Intent intent = new Intent(activity, SetupProfilePicActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putString("username",username);
+                            intent.putExtras(bundle);
                             activity.startActivity(intent);
                         });
                     }

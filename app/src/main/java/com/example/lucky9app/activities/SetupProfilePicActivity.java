@@ -26,6 +26,7 @@ import java.io.InputStream;
 public class SetupProfilePicActivity extends AppCompatActivity {
 
     private int userId;
+    private String username;
     private byte[] imageBytes;
 
     @Override
@@ -35,8 +36,7 @@ public class SetupProfilePicActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            String username = BundleUtil.getUsername(bundle);
-
+            username = bundle.getString("username");
             UserDAO userDAO = new UserDAO(this);
             userId = userDAO.getUserIdByUsername(username);
         }
@@ -69,8 +69,11 @@ public class SetupProfilePicActivity extends AppCompatActivity {
 
 
         confirmButton.setOnClickListener(v -> {
-            if (imageBytes != null && userId != -1) {
+            if (imageBytes != null && userId != -1 && bundle != null) {
                 Intent intent = new Intent(this,MenuActivity.class);
+                bundle.putString("username",username);
+                bundle.putByteArray("profilePictureBytes",imageBytes);
+                intent.putExtras(bundle);
                 ImageDAO imageDao = new ImageDAO(this);
                 imageDao.addProfilePicture(userId, imageBytes);
                 this.startActivity(intent);

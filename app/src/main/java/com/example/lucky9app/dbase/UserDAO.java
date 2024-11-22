@@ -28,7 +28,7 @@ public class UserDAO {
         long result = db.insert(DBHelper.TABLE_USERS, null, values);
         db.close();
 
-        return result != -1;  // Returns true if insert is successful
+        return result != -1;
     }
 
 

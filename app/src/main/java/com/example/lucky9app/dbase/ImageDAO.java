@@ -24,19 +24,18 @@ public class ImageDAO {
 
     public byte[] getProfilePicture(int userId) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        byte[] image = null;
-
         Cursor cursor = db.rawQuery(
-                "SELECT profile_picture FROM user_profile_pictures WHERE user_id = ?",
+                "SELECT profile_picture FROM user_profile_pictures WHERE id = ?",
                 new String[]{String.valueOf(userId)}
         );
 
         if (cursor != null && cursor.moveToFirst()) {
-            image = cursor.getBlob(0);
+            byte [] image = cursor.getBlob(0);
             cursor.close();
+            return image;
         }
 
-        return image;
+        return null;
     }
 
 
