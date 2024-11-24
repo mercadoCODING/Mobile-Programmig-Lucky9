@@ -1,10 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MatchGameActivity">
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center"
+    android:background="@drawable/bg">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Title Text -->
+    <TextView
+        android:id="@+id/scoreText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Match Game"
+        android:textSize="24sp"
+        android:fontFamily="@font/actor"
+        android:layout_marginBottom="8dp"/>  <!-- Adjust the margin -->
+
+    <!-- Button to go back -->
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:layout_marginBottom="16dp"/> <!-- Adjust the margin -->
+
+    <!-- Grid Layout for cards -->
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="4"
+        android:orientation="horizontal"
+        android:paddingTop="16dp"
+        />
+
+    <!-- Button to Restart -->
+    <Button
+        android:id="@+id/restartButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Restart Game"
+        android:layout_marginTop="24dp"/>
+</LinearLayout>

@@ -19,6 +19,7 @@ import com.example.lucky9app.actions.SetCardValues;
 import com.example.lucky9app.dbase.ImageDAO;
 import com.example.lucky9app.dbase.UserDAO;
 import com.example.lucky9app.utility.BundleUtil;
+import com.example.lucky9app.utility.ButtonClickUtility;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -42,6 +43,20 @@ public class MenuActivity extends AppCompatActivity {
             profilePicture = bundle.getByteArray("profilePictureBytes");
         }
         setProfilePicture();
+
+        ImageButton matchGameButton = findViewById(R.id.matchGameButton);
+        ImageButton lucky9Button = findViewById(R.id.lucky9Button);
+        ImageButton leaderboardButton = findViewById(R.id.leaderboardButton);
+
+        ButtonClickUtility.setOnClickListenerImage(matchGameButton,this,MatchGameActivity.class);
+        ButtonClickUtility.setOnClickListenerImage(lucky9Button,this,MatchGameActivity.class);
+        ButtonClickUtility.setOnClickListenerImage(leaderboardButton,this,LeaderboardsActivity.class);
+
+
+
+        /*profileButton.setOnClickListener(v->{
+
+        });*/
     }
 
     private void setProfilePicture() {

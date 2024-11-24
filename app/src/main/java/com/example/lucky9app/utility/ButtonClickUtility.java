@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -19,6 +20,13 @@ public class ButtonClickUtility {
 
     public static void setOnClickListener(final Button button, final Context context, final Class<?> targetActivity){
         button.setOnClickListener(v -> {
+            Intent intent = new Intent(context,targetActivity);
+            context.startActivity(intent);
+        });
+    }
+
+    public static void setOnClickListenerImage(final ImageButton imageButton, final Context context, final Class<?> targetActivity){
+        imageButton.setOnClickListener(v -> {
             Intent intent = new Intent(context,targetActivity);
             context.startActivity(intent);
         });

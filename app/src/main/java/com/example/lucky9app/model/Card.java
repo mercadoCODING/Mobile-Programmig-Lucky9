@@ -4,28 +4,25 @@ import android.widget.ImageView;
 
 public class Card {
     private final String imageName;
-    private final int value;
-    private final ImageView imageView;
-    private boolean isFlipped = false;
-
-    public Card(String imageName, int value, ImageView imageView) {
+    private boolean isFlipped;
+    private boolean isMatched;
+    public Card(String imageName) {
         this.imageName = imageName;
-        this.value = value;
-        this.imageView = imageView;
+        this.isFlipped = false;
+        this.isMatched = false;
     }
 
     public String getImageName() {
         return imageName;
     }
 
-    public int getValue() {
-        return value;
+    public boolean isMatched() {
+        return isMatched;
     }
 
-    public ImageView getImageView() {
-        return imageView;
+    public void setMatched(boolean matched) {
+        isMatched = matched;
     }
-
     public boolean isFlipped() {
         return isFlipped;
     }

@@ -14,7 +14,7 @@ public class SetCardValues {
     private final List<String> cardImages = new ArrayList<>();
     private final HashMap<String, Integer> cardValues = new HashMap<>();
 
-    public SetCardValues(Context context){
+    public SetCardValues(Context context) {
         loadCardImagesFromAssets(context);
         assignCardValues();
     }
@@ -125,11 +125,16 @@ public class SetCardValues {
         return (value != null) ? value : -1;
     }
 
-    public int getCardValue(String imageName) {
-
-        Integer value = cardValues.get(imageName);
-        return (value != null) ? value : -1;
+    public List<String> getCardImages() {
+        return cardImages;
     }
 
+    public HashMap<String, Integer> getCardValues() {
+        return cardValues;
+    }
+
+    public Integer getCardValue(String imageName) {
+        return cardValues.get(imageName);
+    }
 
 }
