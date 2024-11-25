@@ -5,18 +5,23 @@ import android.content.res.AssetManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 
-public class SetCardValues {
+public class SetCard {
 
     private final List<String> cardImages = new ArrayList<>();
     private final HashMap<String, Integer> cardValues = new HashMap<>();
+    private List<String> deck = new ArrayList<>();
+    private Random random = new Random();
 
-    public SetCardValues(Context context) {
+    public SetCard(Context context) {
         loadCardImagesFromAssets(context);
         assignCardValues();
+        createDeck();
     }
 
     private void loadCardImagesFromAssets(Context context) {
@@ -98,22 +103,22 @@ public class SetCardValues {
         valueMapping.put("10_of_spades.png", 10);
 
         //Jack Cards Values
-        valueMapping.put("jack_of_clubs2.png", 11);
-        valueMapping.put("jack_of_diamonds2.png", 11);
-        valueMapping.put("jack_of_hearts2.png", 11);
-        valueMapping.put("jack_of_spades2.png", 11);
+        valueMapping.put("jack_of_clubs2.png", 0);
+        valueMapping.put("jack_of_diamonds2.png", 0);
+        valueMapping.put("jack_of_hearts2.png", 0);
+        valueMapping.put("jack_of_spades2.png", 0);
 
         //Queen Cards Values
-        valueMapping.put("queen_of_clubs2.png", 12);
-        valueMapping.put("queen_of_diamonds2.png", 12);
-        valueMapping.put("queen_of_hearts2.png", 12);
-        valueMapping.put("queen_of_spades2.png", 12);
+        valueMapping.put("queen_of_clubs2.png", 0);
+        valueMapping.put("queen_of_diamonds2.png", 0);
+        valueMapping.put("queen_of_hearts2.png", 0);
+        valueMapping.put("queen_of_spades2.png", 0);
 
         //King Cards Values
-        valueMapping.put("king_of_clubs2.png", 13);
-        valueMapping.put("king_of_diamonds2.png", 13);
-        valueMapping.put("king_of_hearts2.png", 13);
-        valueMapping.put("king_of_spades2.png", 13);
+        valueMapping.put("king_of_clubs2.png", 0);
+        valueMapping.put("king_of_diamonds2.png", 0);
+        valueMapping.put("king_of_hearts2.png", 0);
+        valueMapping.put("king_of_spades2.png", 0);
 
         //Ace Cards Values
         valueMapping.put("ace_of_clubs2.png", 1);
@@ -123,6 +128,18 @@ public class SetCardValues {
 
         Integer value = valueMapping.get(imageName);
         return (value != null) ? value : -1;
+    }
+
+    public void createDeck() {
+        deck.addAll(cardImages); // Add all cards to deck
+        Collections.shuffle(deck, random); // Shuffle the deck
+    }
+
+    public String drawCard() {
+        if (!deck.isEmpty()) {
+            return deck.remove(deck.size() - 1); // Draw the top card
+        }
+        return null; // No cards left
     }
 
     public List<String> getCardImages() {
@@ -136,5 +153,6 @@ public class SetCardValues {
     public Integer getCardValue(String imageName) {
         return cardValues.get(imageName);
     }
+
 
 }

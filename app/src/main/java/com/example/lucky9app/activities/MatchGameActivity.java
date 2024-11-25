@@ -13,7 +13,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.lucky9app.R;
-import com.example.lucky9app.actions.SetCardValues;
+import com.example.lucky9app.actions.SetCard;
+import com.example.lucky9app.utility.ButtonClickUtility;
 import com.example.lucky9app.utility.SetAssetToImageView;
 
 import java.util.ArrayList;
@@ -24,8 +25,8 @@ public class MatchGameActivity extends AppCompatActivity {
 
     private GridLayout gridLayout;
     private TextView scoreText;
-    private Button restartButton;
-    private SetCardValues setCardValues;
+    private Button restartButton,backButton;
+    private SetCard setCard;
     private List<String> shuffledCards;
     private List<ImageView> flippedCards;
     private int matchedPairs;
@@ -40,8 +41,9 @@ public class MatchGameActivity extends AppCompatActivity {
         gridLayout = findViewById(R.id.gridLayout);
         scoreText = findViewById(R.id.scoreText);
         restartButton = findViewById(R.id.restartButton);
+        backButton = findViewById(R.id.backButton);
 
-        setCardValues = new SetCardValues(this);
+        setCard = new SetCard(this);
         flippedCards = new ArrayList<>();
         matchedPairs = 0;
         attempts = 0;
@@ -49,11 +51,13 @@ public class MatchGameActivity extends AppCompatActivity {
 
         setup();
         restartButton.setOnClickListener(v -> restartGame());
+        ButtonClickUtility.setOnClickListener(backButton,this,MenuActivity.class);
+
     }
 
     public void setup() {
         // Get shuffled card images
-        shuffledCards = new ArrayList<>(setCardValues.getCardImages());
+        shuffledCards = new ArrayList<>(setCard.getCardImages());
         Collections.shuffle(shuffledCards);
 
         // Limit the list to 15 pairs of cards (30 cards in total)
@@ -77,10 +81,9 @@ public class MatchGameActivity extends AppCompatActivity {
             cardImageView.setImageResource(R.drawable.back_card);
             cardImageView.setTag(card);
 
-            // Set smaller size for the cards
             GridLayout.LayoutParams params = new GridLayout.LayoutParams();
-            params.width = 200;  // Set the card width to 150dp (adjust as necessary)
-            params.height = 200; // Set the card height to 150dp (adjust as necessary)
+            params.width = 200;
+            params.height = 200;
             cardImageView.setLayoutParams(params);
 
             cardImageView.setOnClickListener(cardClickListener);

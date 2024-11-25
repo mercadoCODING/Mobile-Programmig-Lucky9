@@ -1,24 +1,15 @@
 package com.example.lucky9app.activities;
 
-import android.app.AlertDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.lucky9app.R;
-import com.example.lucky9app.actions.SetCardValues;
-import com.example.lucky9app.dbase.ImageDAO;
 import com.example.lucky9app.dbase.UserDAO;
-import com.example.lucky9app.utility.BundleUtil;
 import com.example.lucky9app.utility.ButtonClickUtility;
 
 public class MenuActivity extends AppCompatActivity {
@@ -49,7 +40,7 @@ public class MenuActivity extends AppCompatActivity {
         ImageButton leaderboardButton = findViewById(R.id.leaderboardButton);
 
         ButtonClickUtility.setOnClickListenerImage(matchGameButton,this,MatchGameActivity.class);
-        ButtonClickUtility.setOnClickListenerImage(lucky9Button,this,MatchGameActivity.class);
+        ButtonClickUtility.setOnClickListenerImage(lucky9Button,this,Lucky9GameActivity.class);
         ButtonClickUtility.setOnClickListenerImage(leaderboardButton,this,LeaderboardsActivity.class);
 
 
